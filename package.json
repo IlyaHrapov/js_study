@@ -2,11 +2,6 @@
   "name": "js_study",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
-  "scripts":{
-    "start": "nodaemon index.js"
-  },
-  "devDependencies": {
-    "nodaemon": "^0.0.5"
-  }
+  "author": "ilya <dargeronpw@yandex.ru>",
+  "license": "MIT"
 }
