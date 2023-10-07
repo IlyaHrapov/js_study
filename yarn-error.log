@@ -1,0 +1,43 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js start
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.8.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/ilya/Desktop/js_study/package.json: Expected ',' or '}' after property value in JSON at position 182
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "js_study",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "ilya <dargeronpw@yandex.ru>",
+    "license": "MIT",
+    "scripts":{
+      "start":"nodemon index.js"
+    }
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
