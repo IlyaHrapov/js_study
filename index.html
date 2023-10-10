@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Страница HTML5</title><meta charset="utf-8">
+  <script src = "index.js"></script>
+  <script>
+    window.addEventListener('load', upp);
+  </script>
+ </head>
+ <body>
+  <article>
+    <h1>HTML5</h1>
+    <ul>
+        <li>Первый</li>
+        <li>Второй</li>
+        <li>Третий</li>
+        <li>Четвертый</li>
+        <li>Пятый</li>
+    </ul>
+    <div><button>Щелкни</button></div>
+  </article>
+<script>
+    document.querySelector('button').addEventListener('click',event => event.target.textContent = "Спасибо"); /*можно воспользоваться методом деструктуризии:
+    document.querySelector('button').addEventListener('click',({target:t}) => t.target.textContent = "Спасибо");*/
+</script>
+ </body>
+</html>
