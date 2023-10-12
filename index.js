@@ -7,5 +7,5 @@ function upp() {
 
   setTimeout(() => {
     document.querySelector('button').dispatchEvent(new MouseEvent('click'));
-}, 5000);
+  }, 5000);
 }

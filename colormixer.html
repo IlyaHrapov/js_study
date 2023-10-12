@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>Color mixer</title>
+     <meta charset="utf-8"><style>body {background: white;}</style> 
+ </head>
+ <body>
+    <h1>Color mixer</h1>
+    <div> 
+      Введите три компонента цвета:<br><br>
+      R: <input value="255" type="number" min="0" max="255"><input type="range" min="0" max="255" step="1" value="255"><br> 
+      G: <input value="255" type="number" min="0" max="255"><input type="range" min="0" max="255" step="1" value="255"><br>
+      B: <input value="255" type="number" min="0" max="255"><input type="range" min="0" max="255" step="1" value="255">
+    </div>
+   
+   <script>{
+     const inputs = document.querySelectorAll('input[type="number"]'); 
+     const ranges = document.querySelectorAll('input[type="range"]');  
+     const colorChanger1 = () => {
+       const r = inputs[0].value; ranges[0].value = r;
+       const g = inputs[1].value; ranges[1].value = g;
+       const b = inputs[2].value; ranges[2].value = b;
+       const back = 'rgb(' + r + ',' + g + ',' + b + ')';
+       document.body.style.backgroundColor = back;    
+     }
+     const colorChanger2 = () => {
+       const r = ranges[0].value; inputs[0].value = r;
+       const g = ranges[1].value; inputs[1].value = g;
+       const b = ranges[2].value; inputs[2].value = b;
+       colorChanger1();
+     }     
+
+     for (let i = 0; i < inputs.length; ++i) {
+       inputs[i].addEventListener('input', colorChanger1);
+       ranges[i].addEventListener('input', colorChanger2);
+     }     
+}</script>
+ </body>
+</html>
