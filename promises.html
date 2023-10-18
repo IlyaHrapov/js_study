@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promises</title>
+</head>
+<body>
+    <button id="1"> callbackHell </button>
+    <button id="2"> promises </button>
+    <button id="3"> await </button>
+    <script>
+        document.getElementById('1').addEventListener('click',
+            e => {
+            console.time("t0");
+            console.time("t1");
+            setTimeout(() => {
+                e.target.textContent = 'Добрый день';
+                console.timeEnd("t1");
+                console.time("t2");
+                setTimeout(()=> {
+                    e.target.style.background = 'gold';
+                    console.timeEnd("t2");
+                    console.time("t3");
+                    setTimeout(()=> {
+                        e.target.parentElement.removeChild(e.target);
+                        console.timeEnd("t3");
+                        console.timeEnd("t0");
+                    }, 5000);
+                },4000);
+            },3000);
+        });
+        document.getElementById('2').addEventListener('click', e => {
+            const prT = t => new Promise (res => setTimeout(res,t));
+            console.time("t0");
+            console.time("t1");
+            prT(3000) // вызываем первый промис
+                .then(() => {
+                e.target.textContent = 'Добрый день';
+                console.timeEnd("t1");
+                console.time("t2");
+                return prT(4000); // возвращаем новый промис внутри первого
+                })
+                .then(() => {
+                    e.target.style.background = 'gold';
+                    console.timeEnd("t2");
+                    console.time("t3");
+                    return prT(5000); // возвращаем новый промис внутри второго
+                })
+                .then(() => {
+                    e.target.parentElement.removeChild(e.target);
+                    console.timeEnd("t3");
+                    console.timeEnd("t0");
+                    return 'ФИНИШ'; //промис возвращать не нужно. Возвращаем результат работы цепочки then
+                })
+                .then(x => console.log(x));//Отображение результата работы цепочки then "ФИНИШ"
+            })
+
+            document.getElementById('3').addEventListener('click', async e => {
+            const prT = t => new Promise (res => setTimeout(res,t));
+            console.time("t0");
+            console.time("t1");
+            await prT(3000) // вызываем первый промис
+                //.then(() => {
+                e.target.textContent = 'Добрый день';
+                console.timeEnd("t1");
+                console.time("t2");
+                await prT(4000); //вызываем второй промис
+               // })
+                //.then(() => {
+                    e.target.style.background = 'gold';
+                    console.timeEnd("t2");
+                    console.time("t3");
+                    await prT(5000); //вызываем третий промис
+                //})
+                //.then(() => {
+                    e.target.parentElement.removeChild(e.target);
+                    console.timeEnd("t3");
+                    console.timeEnd("t0");
+                //})
+                console.log('ФИНИШ');//Отображение результата работы цепочки then "ФИНИШ"
+            })
+    </script>
+
+   
+</body>
+</html> 
