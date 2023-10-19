@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promises</title>
+</head>
+<body>
+    <div></div>
+    <button id="1"> fetch </button>
+    <script>
+        const x = 3;
+      document.getElementById('1').addEventListener('click',
+            async e => {
+                
+                const url = 'https://kodaktor.ru/api/m/'+x;
+                const resp = await fetch(url,{
+                    headers:[
+                                ["Content-Type", "application/json"]
+                            ]
+                            });
+                let res = await resp.json();
+                res = res.result;
+                const answer = document.querySelector('div').innerHTML = res;
+                
+                
+                })
+
+    // async function task(x){
+    //     const url = 'https://kodaktor.ru/api/m/'+x;
+    //     const resp = await fetch(url,{
+    //         headers:[
+    //             ["Content-Type", "application/json"]
+    //         ]
+    //     });
+    //     const res = await resp.json();
+    //     return res.result;
+    // };
+    
+    // console.log(task(3));
+   
+    
+            
+            
+    </script>
+
+
+
+   
+</body>
+</html> 
